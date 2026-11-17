@@ -1,0 +1,35 @@
+import { Body, Controller, Get, HttpCode, Post, Req, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import bcrypt from 'bcryptjs';
+import { UsersService } from '../users/users.service.js';
+import { AuthGuard, type AuthedRequest } from './auth.guard.js';
+
+@Controller('auth')
+export class AuthController {
+  constructor(
+    private readonly users: UsersService,
+    private readonly jwt: JwtService,
+  ) {}
+
+  /** POST /auth/login  { email, password } -> { accessToken, user } */
+  @Post('login')
+  @HttpCode(200)
+  async login(@Body() body: { email?: string; password?: string }) {
+    const user = body.email ? await this.users.findByEmail(body.email) : null;
+    const ok = user && user.isActive && (await bcrypt.compare(body.password ?? '', user.passwordHash));
+    if (!user || !ok) throw new UnauthorizedException('Invalid email or password');
+
+    user.lastLoginAt = new Date();
+    await user.save();
+
+    const accessToken = await this.jwt.signAsync({ sub: String(user._id), email: user.email, role: user.role });
+    return { accessToken, user: this.users.toPublic(user.toObject()) };
+  }
+
+  /** GET /auth/me -> the logged-in user's token data */
+  @Get('me')
+  @UseGuards(AuthGuard)
+  me(@Req() req: AuthedRequest) {
+    return req.user;
+  }
+}
