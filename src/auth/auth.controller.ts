@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import bcrypt from 'bcryptjs';
 import { UsersService } from '../users/users.service.js';
 import { AuthGuard, type AuthedRequest } from './auth.guard.js';
+import { RateLimitGuard } from '../common/rate-limit.guard.js';
 
 @Controller('auth')
 export class AuthController {
@@ -14,6 +15,11 @@ export class AuthController {
   /** POST /auth/login  { email, password } -> { accessToken, user } */
   @Post('login')
   @HttpCode(200)
+  // stops password guessing: 10 tries per 15 minutes per IP + email, 50 per hour per IP
+  @UseGuards(
+    new RateLimitGuard('login', [{ limit: 10, windowMs: 15 * 60_000 }], (req) => String((req.body as { email?: string })?.email ?? '')),
+    new RateLimitGuard('login-ip', [{ limit: 50, windowMs: 60 * 60_000 }]),
+  )
   async login(@Body() body: { email?: string; password?: string }) {
     const user = body.email ? await this.users.findByEmail(body.email) : null;
     const ok = user && user.isActive && (await bcrypt.compare(body.password ?? '', user.passwordHash));

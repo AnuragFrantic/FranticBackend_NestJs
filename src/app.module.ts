@@ -22,7 +22,7 @@ import { MailModule } from './mail/mail.module.js';
 
     JwtModule.register({
       global: true,
-      secret: process.env.JWT_SECRET || 'dev-only-secret-change-me',
+      secret: process.env.JWT_SECRET || 'dev-only-secret-change-me', // production refuses this default (main.ts)
       signOptions: { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as '7d' },
     }),
 

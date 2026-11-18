@@ -1,4 +1,5 @@
-import { BadRequestException, Body, Controller, Get, Headers, HttpCode, Ip, NotFoundException, Param, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Headers, HttpCode, Ip, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
+import { RateLimitGuard } from '../common/rate-limit.guard.js';
 import { ContentService } from '../content/content.service.js';
 import { LeadMailer } from '../mail/lead-mailer.service.js';
 import { buildLeadSource } from './lead-source.js';
@@ -86,6 +87,8 @@ export class PublicController {
 
   @Post('leads')
   @HttpCode(201)
+  // spam protection: max 5 leads a minute and 30 a day from one IP
+  @UseGuards(new RateLimitGuard('leads', [{ limit: 5, windowMs: 60_000 }, { limit: 30, windowMs: 86_400_000 }]))
   async createLead(
     @Body() body: Record<string, unknown>,
     @Ip() ip: string,

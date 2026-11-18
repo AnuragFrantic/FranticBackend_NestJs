@@ -4,12 +4,13 @@ import { join } from 'node:path';
 import { ContentService, RESOURCES } from '../content/content.service.js';
 import { UPLOAD_DIR } from '../media/media.controller.js';
 import { UsersService } from '../users/users.service.js';
+import { fixCompanyFacts } from './company-facts.fix.js';
 
 /**
  * On start-up:
  *  1. if there are no users, create the first admin (ADMIN_EMAIL / ADMIN_PASSWORD)
  *  2. if there is no content yet, load seed/seed-data.json (the current homepage content);
- *     otherwise only add service pages from seed-data.json whose slug doesn't exist yet
+ *     otherwise only add service pages (by slug) and projects (by title) that don’t exist yet
  * Existing data is never overwritten.
  */
 @Injectable()
@@ -58,6 +59,18 @@ export class SeedService implements OnApplicationBootstrap {
         added++;
       }
       if (added) console.log(`Added ${added} new service page(s) from seed-data.json`);
+
+      // same for portfolio projects (matched by title)
+      let projects = 0;
+      for (const p of (data.caseStudies as Record<string, unknown>[]) ?? []) {
+        if (await this.content.findOne('caseStudies', { title: p.title })) continue;
+        await this.content.create('caseStudies', p);
+        projects++;
+      }
+      if (projects) console.log(`Added ${projects} new project(s) from seed-data.json`);
+
+      // one-time correction of old company numbers in pages edited before Nov 2026
+      await fixCompanyFacts(this.content);
       return;
     }
 

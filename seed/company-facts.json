@@ -1,0 +1,21 @@
+{
+  "_note": "One set of company facts everywhere: since 2016 (10+ years), 366+ projects, 400+ clients, 45+ in-house specialists, 10+ countries. Unverified claims (awards, 95% success rate) removed.",
+  "replace": [
+    ["Trusted by 500+ clients globally", "Trusted by 400+ clients globally"],
+    ["has delivered 1000+ projects for 500+ clients", "has delivered 366+ projects for 400+ clients"],
+    ["in India, the USA and 20+ countries", "in India, the USA and 10+ other countries"],
+    ["9+ Years of Experience", "10+ Years of Experience"],
+    ["Building apps since 2016, with 10+ awards along the way.", "Building apps since 2016 for clients in 10+ countries."],
+    ["1000+ projects across 20+ countries, with offices in India & the USA.", "366+ projects across 10+ countries, with offices in India & the USA."],
+    ["75+ In-House Experts", "45+ In-House Experts"],
+    ["Our team of 75+ skilled professionals has delivered 1000+ projects with a 95% success rate on time and within budget.", "Our team of 45+ in-house specialists has delivered 366+ projects for 400+ clients, on time and within budget."],
+    ["9+ years, 1000+ projects in 20+ countries.", "10+ years, 366+ projects in 10+ countries."]
+  ],
+  "stats": [
+    { "value": "10+", "label": "Years of Operation" },
+    { "value": "366+", "label": "Projects Delivered" },
+    { "value": "400+", "label": "Happy Clients" },
+    { "value": "10+", "label": "Countries Served" }
+  ],
+  "forbidden": ["1000+", "1,000+", "500+ clients", "20+ countries", "75+", "10+ awards", "9+ years", "9+ Years", "08+", "95% success"]
+}
