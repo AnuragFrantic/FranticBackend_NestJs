@@ -3,6 +3,7 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module.js';
 import { UPLOAD_DIR } from './media/media.controller.js';
 import dns from 'node:dns';
+import fs from 'node:fs';
 
 if (process.env.DNS_SERVERS) {
   dns.setServers(process.env.DNS_SERVERS.split(','));
@@ -24,9 +25,25 @@ function checkProductionSecrets() {
   }
 }
 
+// Optional HTTPS directly in Node (no Nginx). Set both paths in .env, e.g. Let's Encrypt:
+//   SSL_KEY_PATH=/etc/letsencrypt/live/frush.franticpro.com/privkey.pem
+//   SSL_CERT_PATH=/etc/letsencrypt/live/frush.franticpro.com/fullchain.pem
+// Leave them empty for plain HTTP (local dev, or behind Nginx which handles HTTPS).
+// After certbot renews the certificate, restart the app so it loads the new files.
+function httpsOptions() {
+  const keyPath = process.env.SSL_KEY_PATH;
+  const certPath = process.env.SSL_CERT_PATH;
+  if (!keyPath || !certPath) return undefined;
+  return {
+    key: fs.readFileSync(keyPath, 'utf-8'),
+    cert: fs.readFileSync(certPath, 'utf-8'),
+  };
+}
+
 async function bootstrap() {
   checkProductionSecrets();
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const ssl = httpsOptions();
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, ssl ? { httpsOptions: ssl } : {});
 
   // Behind a proxy / load balancer (Nginx, Render, Cloudflare…) the real visitor IP is in X-Forwarded-For.
   // Needed for lead IPs and the rate limits. TRUST_PROXY=1 (default) trusts one proxy hop; 0 turns it off.
@@ -64,6 +81,6 @@ async function bootstrap() {
 
   const port = Number(process.env.PORT ?? 4000);
   await app.listen(port);
-  console.log(`Frantic API running on http://localhost:${port}`);
+  console.log(`Frantic API running on ${ssl ? 'https' : 'http'}://localhost:${port}`);
 }
 await bootstrap();
