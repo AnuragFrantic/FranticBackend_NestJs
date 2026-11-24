@@ -4,6 +4,7 @@ import {
   Delete,
   Param,
   Post,
+  Req,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -32,6 +33,13 @@ const ALLOWED = [
   'video/quicktime',
 ];
 const MAX_MB = 80;
+/** By extension too: some browsers/OSes send videos as "application/octet-stream" or "video/x-m4v". */
+const EXT_MIME: Record<string, string> = {
+  '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml',
+  '.pdf': 'application/pdf', '.mp4': 'video/mp4', '.m4v': 'video/mp4', '.webm': 'video/webm', '.mov': 'video/quicktime',
+};
+const mimeOf = (file: { originalname: string; mimetype: string }) =>
+  ALLOWED.includes(file.mimetype) ? file.mimetype : EXT_MIME[extname(file.originalname).toLowerCase()];
 
 /**
  *   POST   /admin/media/upload   (multipart, field "file")  -> media document
@@ -51,18 +59,29 @@ export class MediaController {
         filename: (_req, file, cb) => cb(null, `${randomUUID()}${extname(file.originalname).toLowerCase()}`),
       }),
       limits: { fileSize: MAX_MB * 1024 * 1024 },
-      fileFilter: (_req, file, cb) => cb(null, ALLOWED.includes(file.mimetype)),
+      fileFilter: (req, file, cb) => {
+        if (mimeOf(file)) return cb(null, true);
+        // remember why, so the admin sees a clear message instead of "no file"
+        (req as { rejected?: string }).rejected = `${file.originalname} (${file.mimetype || 'unknown type'})`;
+        cb(null, false);
+      },
     }),
   )
-  async upload(@UploadedFile() file?: Express.Multer.File) {
-    if (!file) throw new BadRequestException(`Upload an image, PDF or video up to ${MAX_MB} MB`);
+  async upload(@UploadedFile() file?: Express.Multer.File, @Req() req?: { rejected?: string }) {
+    if (!file) {
+      throw new BadRequestException(
+        req?.rejected
+          ? `File type not supported: ${req.rejected}. Use PNG, JPG, WebP, GIF, SVG, PDF, or MP4 / WebM / MOV video.`
+          : `Upload an image, PDF or video up to ${MAX_MB} MB`,
+      );
+    }
     return this.content.create('media', {
       name: file.originalname,
       file: file.filename,
       url: `/uploads/${file.filename}`, // relative — the admin and website add the API address
       alt: '',
       size: file.size,
-      mime: file.mimetype,
+      mime: mimeOf(file) ?? file.mimetype,
     });
   }
 
