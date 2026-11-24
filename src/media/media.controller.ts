@@ -20,8 +20,18 @@ import { ContentService } from '../content/content.service.js';
 export const UPLOAD_DIR = join(process.cwd(), 'uploads');
 if (!existsSync(UPLOAD_DIR)) mkdirSync(UPLOAD_DIR, { recursive: true });
 
-const ALLOWED = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg+xml', 'application/pdf'];
-const MAX_MB = 5;
+const ALLOWED = [
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/gif',
+  'image/svg+xml',
+  'application/pdf',
+  'video/mp4',
+  'video/webm',
+  'video/quicktime',
+];
+const MAX_MB = 80;
 
 /**
  *   POST   /admin/media/upload   (multipart, field "file")  -> media document
@@ -45,7 +55,7 @@ export class MediaController {
     }),
   )
   async upload(@UploadedFile() file?: Express.Multer.File) {
-    if (!file) throw new BadRequestException(`Upload an image or PDF up to ${MAX_MB} MB`);
+    if (!file) throw new BadRequestException(`Upload an image, PDF or video up to ${MAX_MB} MB`);
     return this.content.create('media', {
       name: file.originalname,
       file: file.filename,
