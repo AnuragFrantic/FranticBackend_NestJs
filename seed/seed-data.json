@@ -15440,7 +15440,7 @@
     {
       "featured": true,
       "title": "Trishul Homecare",
-      "image": "/uploads/project-trishul.webp",
+      "image": "/uploads/cs-trishul-cover.webp",
       "logo": "/uploads/project-trishul-icon.webp",
       "industry": "Ecommerce & Retail",
       "platform": "B2B + B2C App",
@@ -15555,20 +15555,20 @@
         ],
         "screens": [
           {
-            "title": "B2C app",
-            "images": [
-              "/uploads/cs-trishul-screens-b2c-1.webp",
-              "/uploads/cs-trishul-screens-b2c-2.webp",
-              "/uploads/cs-trishul-screens-b2c-3.webp",
-              "/uploads/cs-trishul-screens-b2c-4.webp"
-            ]
-          },
-          {
-            "title": "B2B app",
-            "images": [
-              "/uploads/cs-trishul-screens-b2b-1.webp",
-              "/uploads/cs-trishul-screens-b2b-2.webp",
-              "/uploads/cs-trishul-screens-b2b-3.webp"
+            "title": "App screens",
+            "items": [
+              {
+                "image": "/uploads/cs-trishul-screens-1.webp",
+                "caption": "OTP Verification, Home, Product Details, Categories, Cart, Select Address"
+              },
+              {
+                "image": "/uploads/cs-trishul-screens-2.webp",
+                "caption": "Wishlist, Notifications, Search, Orders, Delivery Address, Reviews"
+              },
+              {
+                "image": "/uploads/cs-trishul-screens-3.webp",
+                "caption": "Profile, Edit Profile, FAQs, Offers, Product Listing, Notifications"
+              }
             ]
           }
         ],
@@ -15599,9 +15599,30 @@
         ],
         "techNote": "Flutter for fast cross-platform interfaces, Node.js for scalable and secure backend services, and MongoDB with MySQL for flexible data modelling and consistent performance.",
         "metaTitle": "Trishul Homecare Case Study – B2B & B2C App | Frantic",
-        "metaDescription": "How Frantic Infotech designed Trishul Homecare’s B2B & B2C marketplace app: dual login, tiered pricing and one-tap reorders — 40% faster B2B ordering."
+        "metaDescription": "How Frantic Infotech designed Trishul Homecare’s B2B & B2C marketplace app: dual login, tiered pricing and one-tap reorders — 40% faster B2B ordering.",
+        "banner": "/uploads/cs-trishul-banner.webp",
+        "brandBoard": "/uploads/cs-trishul-brand-board.webp",
+        "stats": [
+          {
+            "label": "Industry",
+            "value": "Ecommerce & Retail"
+          },
+          {
+            "label": "Platform",
+            "value": "Android • iOS"
+          },
+          {
+            "label": "App Downloads",
+            "value": "100K+"
+          },
+          {
+            "label": "Our Role",
+            "value": "Product Design • Development • Launch"
+          }
+        ]
       },
-      "createdAt": "2026-11-17T13:25:01.386Z"
+      "createdAt": "2026-11-17T13:25:01.386Z",
+      "thumbnail": "/uploads/cs-trishul-card.webp"
     },
     {
       "featured": true,
