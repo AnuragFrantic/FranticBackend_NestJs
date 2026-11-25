@@ -1,0 +1,215 @@
+{
+  "_readme": "Content for the Monte Carlo, Taste Food and CICO case studies (from the franticpro.com case study PDFs + Figma). Values like \"@cs-monte-carlo-banner.webp\" are image files in ./images — the upload script uploads them and puts the real URL in their place. A missing image file is simply skipped (the field keeps its current value).",
+  "projects": [
+    {
+      "slug": "trishul-homecare",
+      "thumbnail": "@cs-trishul-card.webp",
+      "image": "@cs-trishul-cover.webp",
+      "caseStudy": {
+        "banner": "@cs-trishul-banner.webp",
+        "brandBoard": "@cs-trishul-brand-board.webp",
+        "video": "",
+        "screens": [
+          {
+            "title": "App screens",
+            "items": [
+              { "image": "@cs-trishul-screens-1.webp", "caption": "OTP Verification, Home, Product Details, Categories, Cart, Select Address" },
+              { "image": "@cs-trishul-screens-2.webp", "caption": "Wishlist, Notifications, Search, Orders, Delivery Address, Reviews" },
+              { "image": "@cs-trishul-screens-3.webp", "caption": "Profile, Edit Profile, FAQs, Offers, Product Listing, Notifications" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "monte-carlo",
+      "thumbnail": "@cs-monte-carlo-card.webp",
+      "image": "@cs-monte-carlo-cover.webp",
+      "caseStudy": {
+        "published": true,
+        "subtitle": "Premium Fashion Shopping App for Men, Women & Kids — Android & iOS",
+        "highlights": [
+          "Dedicated brand app for Monte Carlo’s full catalogue",
+          "Curated collections for men, women and kids",
+          "Monte Carlo, Rock.it, Luxuria and Home brands in one app",
+          "Loyalty points, credits and coupons",
+          "Secure checkout with UPI, cards and wallets",
+          "Clean, fast and on-brand shopping experience"
+        ],
+        "overview": "Monte Carlo – Online Shop is a mobile app by Monte Carlo Fashions that brings its trendy urban wear to customers throughout India.\n\nWith both men’s and women’s collections, the app delivers premium apparel — jackets, jeans, shirts, t-shirts, tops, sweaters and more — through a dedicated digital shopping experience.",
+        "goal": "Extend the Monte Carlo brand experience into a dedicated mobile channel — curated collections, easy category access, a fast and secure checkout and a consistent premium brand identity for shoppers across India.",
+        "audiences": [
+          { "title": "Brand-loyal shoppers", "text": "Customers who want Monte Carlo’s latest styles without going through general marketplaces." },
+          { "title": "New online buyers", "text": "Shoppers across India outside the reach of Monte Carlo’s physical stores." }
+        ],
+        "problems": [
+          "Traditional in-store models limit reach to regionally local customers.",
+          "Online fashion platforms often lack brand-specific premium quality assurance and consistency.",
+          "Users face friction discovering brand collections through general marketplaces.",
+          "Mobile purchase flows can struggle with performance, clarity and brand identity.",
+          "Brand-loyal customers lacked a dedicated mobile presence with the full catalogue."
+        ],
+        "solutions": [
+          { "title": "Dedicated Brand App", "text": "Monte Carlo’s brand experience extended into its own digital channel." },
+          { "title": "Curated Collections", "text": "Men, women and kids collections under one app for easier discovery." },
+          { "title": "Clean Browsing", "text": "Easy category access and product pages that stay true to the brand’s style." },
+          { "title": "Secure by Design", "text": "No data shared with third parties and data encrypted in transit." },
+          { "title": "Optimised Performance", "text": "Fast browsing and shopping for customers across India." }
+        ],
+        "process": ["Research", "UI/UX Design", "Development Setup", "Front-End & Back-End", "Testing & Validation", "Go Live"],
+        "screens": [
+          {
+            "title": "App screens",
+            "items": [
+              { "image": "@cs-monte-carlo-screens-1.webp", "caption": "Splash, Create Account, Home Range, Settings, Home, Top Selling" },
+              { "image": "@cs-monte-carlo-screens-2.webp", "caption": "Product Details, Loyalty Points, Checkout, Season Trends, Account, Collections" },
+              { "image": "@cs-monte-carlo-screens-3.webp", "caption": "Add Address, Top Selling, Notifications, Wishlist, Home, My Credits" }
+            ]
+          }
+        ],
+        "results": [
+          { "value": "Omnichannel", "label": "Helped Monte Carlo move from purely offline to omnichannel retail and reach more customers" },
+          { "value": "Brand-first", "label": "A brand-centric shopping experience that stands apart from general marketplace apps" },
+          { "value": "Android + iOS", "label": "Live on Google Play and the App Store" },
+          { "value": "Loyalty", "label": "Direct access to the newest styles plus loyalty points that keep shoppers coming back" }
+        ],
+        "tech": ["Flutter", "Node.js", "React.js", "MongoDB"],
+        "techNote": "Flutter for a seamless cross-platform mobile experience, Node.js for APIs, user management and real-time data, React.js for the admin dashboard and MongoDB for flexible, scalable data storage.",
+        "metaTitle": "Monte Carlo Case Study – Fashion Shopping App | Frantic",
+        "metaDescription": "How Frantic Infotech built Monte Carlo’s premium fashion shopping app for Android & iOS: curated collections, loyalty points and a secure, on-brand checkout.",
+        "banner": "@cs-monte-carlo-banner.webp",
+        "brandBoard": "@cs-monte-carlo-brand-board.webp",
+        "stats": [
+          { "label": "Industry", "value": "Fashion & Retail" },
+          { "label": "Platform", "value": "Android • iOS" },
+          { "label": "Client", "value": "Monte Carlo Fashions" },
+          { "label": "Our Role", "value": "Product Design • Development • Launch" }
+        ]
+      }
+    },
+    {
+      "slug": "taste-food",
+      "thumbnail": "@cs-taste-food-card.webp",
+      "image": "@cs-taste-food-cover.webp",
+      "caseStudy": {
+        "published": true,
+        "subtitle": "Personalised Food Delivery App Connecting Users to Their Favourite Restaurants",
+        "highlights": [
+          "Smart filters and curated restaurant recommendations",
+          "Personalised meal suggestions from order history",
+          "Clean, minimal UI for quick browsing and ordering",
+          "Saved favourites and one-tap repeat orders",
+          "Real-time order tracking",
+          "Join as a restaurant or delivery partner"
+        ],
+        "overview": "Taste Food is a modern food delivery app crafted to bring users closer to their favourite restaurants and cuisines.\n\nWith a focus on personalisation and user delight, it offers a smooth and flavourful experience that goes beyond conventional food delivery platforms — from intuitive browsing to real-time tracking.",
+        "goal": "Design a user-centric food delivery app with smart filters, curated recommendations and personalised suggestions — making it quick to find the right meal, simple to order and easy to come back for more.",
+        "audiences": [
+          { "title": "Food lovers", "text": "Users who want their favourite meals and restaurants in a few taps." },
+          { "title": "Restaurants & delivery partners", "text": "Local and niche restaurants and riders who join the platform from the app." }
+        ],
+        "problems": [
+          "Most food delivery apps offer a generic and repetitive user experience.",
+          "Limited personalisation makes it hard to find favourite or suitable meals quickly.",
+          "No curated suggestions or intelligent recommendations for users.",
+          "Navigation and browsing can feel cluttered and overwhelming."
+        ],
+        "solutions": [
+          { "title": "Smart Filters", "text": "Curated restaurant recommendations and filters to find the right meal fast." },
+          { "title": "Personalisation", "text": "Meal suggestions based on user preferences and order history." },
+          { "title": "Minimal UI", "text": "Clean screens for easy browsing, selection and ordering." },
+          { "title": "Convenience Features", "text": "Saved favourites, live tracking and repeat orders." }
+        ],
+        "process": ["Requirement Gathering & Analysis", "UI/UX Design", "Development Setup", "Front-End & Back-End", "QA & User Acceptance Testing", "Go Live"],
+        "screens": [
+          {
+            "title": "App screens",
+            "items": [
+              { "image": "@cs-taste-food-screens-1.png", "caption": "" }
+            ]
+          }
+        ],
+        "results": [
+          { "value": "Personalised", "label": "Tailored food recommendations, unlike many generic delivery platforms" },
+          { "value": "More reach", "label": "Local and niche restaurants reach the right audience through smart listing and filters" },
+          { "value": "Repeat orders", "label": "A smooth, enjoyable ordering experience that encourages loyalty" },
+          { "value": "Android + iOS", "label": "Live on Google Play and the App Store" }
+        ],
+        "metaTitle": "Taste Food Case Study – Food Delivery App | Frantic",
+        "metaDescription": "How Frantic Infotech designed Taste Food: a personalised food delivery app with smart filters, curated restaurants, live tracking and repeat orders.",
+        "banner": "@cs-taste-food-banner.webp",
+        "brandBoard": "@cs-taste-food-brand-board.webp",
+        "stats": [
+          { "label": "Industry", "value": "Food Delivery" },
+          { "label": "Platform", "value": "Android • iOS" },
+          { "label": "Users", "value": "Customers • Restaurants • Riders" },
+          { "label": "Our Role", "value": "Product Design • Development • Launch" }
+        ]
+      }
+    },
+    {
+      "slug": "cico",
+      "image": "@cs-cico-cover.png",
+      "caseStudy": {
+        "published": true,
+        "subtitle": "Inventory, Sales & Marketing App for Distributors, Salespeople and Individuals",
+        "highlights": [
+          "Custom modules for distributors, salespeople, individuals and marketing",
+          "Real-time stock levels and order tracking",
+          "Route master and daily route planning for field sales",
+          "Quotations, forecasts, invoices, ledgers and ERP orders",
+          "Wallet balances and construction planning for individuals",
+          "Promotion and product-demand insights for marketing teams"
+        ],
+        "overview": "The CICO mobile app is a complete inventory management platform built to streamline the work of distributors, salespeople, individual users and marketing teams.\n\nWith a custom module for each role, CICO removes operational inefficiencies and gives everyone one place to manage stock, plan routes, serve customers and gain marketing insights.",
+        "goal": "Design and build a mobile-first platform that unifies inventory management, sales tracking, route planning and marketing intelligence in one intuitive interface — with real-time insights and simpler workflows that improve productivity and customer experience.",
+        "audiences": [
+          { "title": "Distributors", "text": "Manage inventory, place and track orders and see product insights." },
+          { "title": "Salespeople", "text": "Handle routes, customers, quotations, forecasts and invoices on the move." },
+          { "title": "Individuals", "text": "Browse distributors and products, manage a wallet and plan construction needs." },
+          { "title": "Marketing teams", "text": "Manage promotions, track item requests and analyse product demand." }
+        ],
+        "problems": [
+          "Inventory and operations were fragmented across different user groups.",
+          "Distributors found it hard to track real-time stock levels and manage orders.",
+          "Salespeople needed one system for routes, customers, quotations, invoicing and forecasts.",
+          "Individuals lacked tools for construction planning, product browsing and wallet-based ordering.",
+          "Marketing teams struggled to collect insights and align campaigns with real demand."
+        ],
+        "solutions": [
+          { "title": "Distributor Dashboards", "text": "Inventory tracking, real-time order updates and performance analytics." },
+          { "title": "Field Sales App", "text": "Distributors, routes, inventory, customer queries, quotations and invoicing in one place." },
+          { "title": "Individual Module", "text": "A lightweight interface to browse distributors, manage inventory and track wallet balances." },
+          { "title": "Marketing Insights", "text": "Dashboards for promotions, product demand, item requests and approved inventory lists." }
+        ],
+        "process": ["Research", "UI/UX Design", "Development Setup", "Front-End & Back-End", "User Testing", "Go Live"],
+        "screens": [
+          {
+            "title": "App screens",
+            "items": [
+              { "image": "@cs-cico-screens-1.png", "caption": "" }
+            ]
+          }
+        ],
+        "results": [
+          { "value": "4 roles", "label": "Distributors, salespeople, individuals and marketing teams on one platform" },
+          { "value": "Real-time", "label": "Live stock levels and order updates help distributors plan better" },
+          { "value": "Fewer steps", "label": "Tailored tools for each role removed redundant workflows" },
+          { "value": "Better targeting", "label": "Integrated analytics help marketing teams get more from promotions" }
+        ],
+        "tech": ["Flutter", "React.js", ".NET", "MySQL"],
+        "techNote": "ReactJS for a dynamic web interface, Flutter for a seamless cross-platform mobile app, .NET for a secure and scalable backend and MySQL for efficient data storage.",
+        "metaTitle": "CICO Case Study – Inventory & Sales Management App | Frantic",
+        "metaDescription": "How Frantic Infotech built CICO: one app for distributors, salespeople, individuals and marketing teams — real-time inventory, route planning and sales insights.",
+        "banner": "@cs-cico-banner.png",
+        "brandBoard": "@cs-cico-brand-board.png",
+        "stats": [
+          { "label": "Industry", "value": "Inventory & Distribution" },
+          { "label": "Platform", "value": "Android • Web" },
+          { "label": "Users", "value": "Distributors • Sales • Marketing" },
+          { "label": "Our Role", "value": "Product Design • Development • Launch" }
+        ]
+      }
+    }
+  ]
+}
