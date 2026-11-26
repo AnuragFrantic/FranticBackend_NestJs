@@ -36,9 +36,9 @@ if (!API || !ADMIN_EMAIL || !ADMIN_PASSWORD) {
 }
 
 const seed = JSON.parse(readFileSync(new URL("../seed/seed-data.json", import.meta.url), "utf8"));
-const local = seed.caseStudies.filter((c) => c.caseStudy && (!only || c.slug === only));
+const local = seed.caseStudies.filter((c) => (c.caseStudy || c.caseUrl) && (!only || c.slug === only));
 if (!local.length) {
-  console.error("No case studies with detailed content found" + (only ? ` for "${only}"` : "") + ".");
+  console.error("No case studies with detailed content or a case-study PDF found" + (only ? ` for "${only}"` : "") + ".");
   process.exit(1);
 }
 

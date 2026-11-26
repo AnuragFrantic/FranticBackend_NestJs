@@ -38,7 +38,6 @@ export class LeadMailer {
               subject: `We’ve received your enquiry – Frantic Infotech (${leadRef(lead)})`,
               html: clientEmail(lead, contact),
               replyTo: contact.email,
-              attachments: [attachment],
             }),
       ]);
     } catch (err) {

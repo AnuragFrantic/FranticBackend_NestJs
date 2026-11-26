@@ -129,7 +129,7 @@ export function teamEmail(lead: Lead) {
      <table style="width:100%;border-collapse:collapse;font-size:13px;">${table(origin)}</table>
      ${h('Visitor details')}
      <table style="width:100%;border-collapse:collapse;font-size:13px;">${table(visitor)}</table>`,
-    'This message was generated from your website contact form. The enquiry summary PDF sent to the client is attached.',
+    'This message was generated from your website contact form. An enquiry summary PDF is attached for your records.',
   );
 }
 
@@ -152,7 +152,7 @@ export function clientEmail(lead: Lead, c: Contact) {
      </p>
      <table style="width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 18px;">${table(rows)}</table>
      <p style="margin:0 0 14px;font-size:14px;color:#334155;line-height:1.6;">
-       We’ve attached a short PDF summary of your enquiry and what happens next. Need to talk sooner?
+       Need to talk sooner?
      </p>
      <p style="margin:0;">
        ${phone ? `<a href="tel:${escapeHtml(phone.replace(/[^\d+]/g, ''))}" style="display:inline-block;background:${BRAND};color:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:bold;">Call ${escapeHtml(phone)}</a>&nbsp;` : ''}
