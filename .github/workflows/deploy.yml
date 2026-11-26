@@ -1,0 +1,32 @@
+name: Deploy to production
+
+# Pushing to main builds and restarts the API on the server. Nothing runs if the build fails.
+# Secrets live in GitHub → this repo → Settings → Secrets and variables → Actions:
+#   SSH_HOST        the server's IP or hostname (api.franticpro.com)
+#   SSH_USER        the SSH user (ubuntu)
+#   SSH_PRIVATE_KEY the deploy key's private half (see setup notes below)
+#   APP_DIR         absolute path to the repo on the server (/var/www/frantic-api)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            cd "${{ secrets.APP_DIR }}"
+            git fetch origin main
+            git reset --hard origin/main
+            npm ci --omit=dev
+            npm run build
+            pm2 restart frantic-api --update-env
