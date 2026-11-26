@@ -108,8 +108,8 @@ export function buildLeadPdf(lead: Lead, c: Contact): Promise<Buffer> {
     /* ---------- why us ---------- */
     y = sectionTitle(doc, 'Why businesses choose Frantic', left, y + 24);
     const stats = [
-      ['400+', 'Happy clients'],
-      ['10+', 'Countries served'],
+      ['530+', 'Happy clients'],
+      ['1000+', 'Projects delivered'],
       ['70+', 'Apps on Play Store'],
       ['Since 2016', 'Building apps & web'],
     ];
