@@ -8,16 +8,18 @@ type Rules = {
   replace: [string, string][];
   stats: { value: string; label: string }[];
   homeStats?: HomeStat[];
+  slugRenames?: [string, string][];
   forbidden: string[];
 };
 
 /**
- * Ongoing content fix, runs on every start-up: every service/company page, every FAQ and the homepage's
- * own About text and stats use the same company facts — since 2016, 1000+ projects, 530+ clients,
- * 350+ custom software for enterprises, 7+ timezones served.
- * Old phrases ("366+ projects", "400+ clients", "9+ years", "75+", "10+ awards"…) are replaced word for word,
- * using the rules in seed/company-facts.json. It only touches documents that still contain an old phrase,
- * so it does nothing once everything is up to date, and it saves a backup to seed/backups/ first.
+ * Ongoing content fix, runs on every start-up: every service/company page, every FAQ, every testimonial
+ * and the homepage's own About text and stats use the same company facts — since 2016, 1000+ projects,
+ * 530+ clients, 350+ custom software for enterprises, 7+ timezones served.
+ * Old phrases ("366+ projects", "400+ clients", "9+ years", "75+", "10+ awards", "Tasty Food Delivery"…)
+ * are replaced word for word, using the rules in seed/company-facts.json. It only touches documents that
+ * still contain an old phrase, so it does nothing once everything is up to date, and it saves a backup
+ * to seed/backups/ first.
  */
 export async function fixCompanyFacts(content: ContentService) {
   const file = join(process.cwd(), 'seed', 'company-facts.json');
@@ -30,21 +32,30 @@ export async function fixCompanyFacts(content: ContentService) {
   };
 
   const pages = (await content.list('servicePages')) as Doc[];
-  const outdatedPages = pages.filter((p) => hasForbidden({ ...p, stats: undefined }));
+  const renames = rules.slugRenames ?? [];
+  const outdatedPages = pages.filter(
+    (p) => hasForbidden({ ...p, stats: undefined }) || renames.some(([from]) => p.slug === from),
+  );
 
   const faqs = (await content.list('faqs')) as Doc[];
   const outdatedFaqs = faqs.filter((f) => hasForbidden(f));
+
+  const testimonials = (await content.list('testimonials')) as Doc[];
+  const outdatedTestimonials = testimonials.filter((t) => hasForbidden(t));
 
   const home = await content.getSetting('home');
   const homeStats = (home.stats as HomeStat[] | undefined) ?? [];
   const homeOutdated = hasForbidden({ ...home, stats: undefined }) || homeStats.some((s) => /year/i.test(s.label) && s.value < 10);
 
-  if (!outdatedPages.length && !outdatedFaqs.length && !homeOutdated) return;
+  if (!outdatedPages.length && !outdatedFaqs.length && !outdatedTestimonials.length && !homeOutdated) return;
 
   const dir = join(process.cwd(), 'seed', 'backups');
   mkdirSync(dir, { recursive: true });
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-  writeFileSync(join(dir, `company-facts-${stamp}.json`), JSON.stringify({ servicePages: outdatedPages, faqs: outdatedFaqs, home }, null, 2));
+  writeFileSync(
+    join(dir, `company-facts-${stamp}.json`),
+    JSON.stringify({ servicePages: outdatedPages, faqs: outdatedFaqs, testimonials: outdatedTestimonials, home }, null, 2),
+  );
 
   let phrases = 0;
   const fix = (v: unknown): unknown => {
@@ -62,11 +73,14 @@ export async function fixCompanyFacts(content: ContentService) {
     return v;
   };
 
+  let slugsRenamed = 0;
   for (const p of outdatedPages) {
     const { _id, createdAt, updatedAt, ...rest } = p;
     void createdAt; void updatedAt;
     const fixed = fix(rest) as Doc;
     if (Array.isArray(p.stats) && p.stats.length) fixed.stats = rules.stats;
+    const rename = renames.find(([from]) => fixed.slug === from);
+    if (rename) { fixed.slug = rename[1]; slugsRenamed++; }
     await content.update('servicePages', String(_id), fixed);
   }
 
@@ -74,6 +88,12 @@ export async function fixCompanyFacts(content: ContentService) {
     const { _id, createdAt, updatedAt, ...rest } = f;
     void createdAt; void updatedAt;
     await content.update('faqs', String(_id), fix(rest) as Doc);
+  }
+
+  for (const t of outdatedTestimonials) {
+    const { _id, createdAt, updatedAt, ...rest } = t;
+    void createdAt; void updatedAt;
+    await content.update('testimonials', String(_id), fix(rest) as Doc);
   }
 
   if (homeOutdated) {
@@ -85,6 +105,6 @@ export async function fixCompanyFacts(content: ContentService) {
   }
 
   console.log(
-    `Company facts fixed: ${outdatedPages.length} page(s), ${outdatedFaqs.length} FAQ(s), ${phrases} phrase(s) replaced${homeOutdated ? ', homepage text & stats updated' : ''}. Backup: seed/backups/company-facts-${stamp}.json`,
+    `Company facts fixed: ${outdatedPages.length} page(s) (${slugsRenamed} slug rename(s)), ${outdatedFaqs.length} FAQ(s), ${outdatedTestimonials.length} testimonial(s), ${phrases} phrase(s) replaced${homeOutdated ? ', homepage text & stats updated' : ''}. Backup: seed/backups/company-facts-${stamp}.json`,
   );
 }

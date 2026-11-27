@@ -11,7 +11,14 @@
     ["Our team of 75+ skilled professionals has delivered 1000+ projects with a 95% success rate on time and within budget.", "Our team of 45+ in-house specialists has delivered 366+ projects for 400+ clients, on time and within budget."],
     ["9+ years, 1000+ projects in 20+ countries.", "10+ years, 366+ projects in 10+ countries."],
     ["366+", "1000+"],
-    ["400+", "530+"]
+    ["400+", "530+"],
+    ["Tasty Food Delivery", "Taste Food"],
+    ["/how-it-work/", "/how-it-works/"],
+    ["/buisness-engagment/", "/business-engagement/"]
+  ],
+  "slugRenames": [
+    ["how-it-work", "how-it-works"],
+    ["buisness-engagment", "business-engagement"]
   ],
   "stats": [
     { "value": "10+", "label": "Years of Experience" },
@@ -27,5 +34,5 @@
     { "value": 350, "suffix": "+", "label": "Custom Software for Enterprises" },
     { "value": 7, "suffix": "+", "label": "Timezones Served" }
   ],
-  "forbidden": ["366+", "400+", "1,000+", "500+ clients", "20+ countries", "75+", "10+ awards", "9+ years", "9+ Years", "08+", "95% success"]
+  "forbidden": ["366+", "400+", "1,000+", "500+ clients", "20+ countries", "75+", "10+ awards", "9+ years", "9+ Years", "08+", "95% success", "Tasty Food Delivery", "/how-it-work/", "/buisness-engagment/"]
 }

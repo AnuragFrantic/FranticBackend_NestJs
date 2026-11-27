@@ -11891,7 +11891,7 @@
       "related": [
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Our Vision & Mission",
@@ -11970,7 +11970,7 @@
       "createdAt": "2026-11-17T13:25:01.386Z"
     },
     {
-      "slug": "how-it-work",
+      "slug": "how-it-works",
       "pillar": "apps",
       "status": "published",
       "updatedAt": "2026-11-17T00:00:00.000Z",
@@ -12157,7 +12157,7 @@
       "related": [
         {
           "label": "Business Engagement Models",
-          "href": "/buisness-engagment/"
+          "href": "/business-engagement/"
         },
         {
           "label": "Design Methodology",
@@ -12183,7 +12183,7 @@
           "agile development process",
           "Frantic Infotech process"
         ],
-        "canonical": "https://www.franticpro.com/how-it-work/",
+        "canonical": "https://www.franticpro.com/how-it-works/",
         "ogTitle": "How We Work | Our Process of Working | Frantic Infotech",
         "ogDescription": "How we work at Frantic Infotech: a transparent, agile process from free consultation to launch, with a demo every two weeks and support after go-live.",
         "noIndex": false,
@@ -12213,7 +12213,7 @@
         "callTrackingNumber": "+91 84471 49178",
         "stickyCta": true,
         "thankYouPath": "/thank-you/",
-        "utmCampaign": "how-it-work"
+        "utmCampaign": "how-it-works"
       },
       "showProjects": true,
       "showTech": false,
@@ -12423,7 +12423,7 @@
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Client Reviews",
@@ -12498,7 +12498,7 @@
       "createdAt": "2026-11-17T13:25:01.386Z"
     },
     {
-      "slug": "buisness-engagment",
+      "slug": "business-engagement",
       "pillar": "apps",
       "status": "published",
       "updatedAt": "2026-11-17T00:00:00.000Z",
@@ -12681,7 +12681,7 @@
       "related": [
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Hire Mobile App Developers",
@@ -12707,7 +12707,7 @@
           "fixed price model",
           "time and material model"
         ],
-        "canonical": "https://www.franticpro.com/buisness-engagment/",
+        "canonical": "https://www.franticpro.com/business-engagement/",
         "ogTitle": "Business Engagement Models | Frantic Infotech",
         "ogDescription": "Flexible business engagement models for app development: fixed price, dedicated team, time & material or hourly. Transparent pricing and full code ownership.",
         "noIndex": false,
@@ -12737,7 +12737,7 @@
         "callTrackingNumber": "+91 84471 49178",
         "stickyCta": true,
         "thankYouPath": "/thank-you/",
-        "utmCampaign": "buisness-engagment"
+        "utmCampaign": "business-engagement"
       },
       "showProjects": true,
       "showTech": false,
@@ -12960,7 +12960,7 @@
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         }
       ],
       "seo": {
@@ -13219,7 +13219,7 @@
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Software Testing",
@@ -13486,7 +13486,7 @@
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Contact Us",
@@ -13764,11 +13764,11 @@
       "related": [
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Business Engagement Models",
-          "href": "/buisness-engagment/"
+          "href": "/business-engagement/"
         },
         {
           "label": "About Us",
@@ -14034,7 +14034,7 @@
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "FAQs",
@@ -14579,11 +14579,11 @@
       "related": [
         {
           "label": "Business Engagement Models",
-          "href": "/buisness-engagment/"
+          "href": "/business-engagement/"
         },
         {
           "label": "How We Work",
-          "href": "/how-it-work/"
+          "href": "/how-it-works/"
         },
         {
           "label": "Client Reviews",
@@ -15276,9 +15276,9 @@
           }
         ],
         "testimonial": {
-          "quote": "Frantic Infotech did an excellent job building our Tasty Food Delivery platform. From intuitive design to seamless performance, every feature was crafted with attention to detail.",
+          "quote": "Frantic Infotech did an excellent job building our Taste Food platform. From intuitive design to seamless performance, every feature was crafted with attention to detail.",
           "name": "Mr. Junaid Rahman",
-          "role": "Founder, Tasty Food Delivery"
+          "role": "Founder, Taste Food"
         }
       },
       "createdAt": "2026-11-17T13:25:01.386Z"
@@ -16228,8 +16228,8 @@
     },
     {
       "name": "Mr. Junaid Rahman",
-      "role": "Founder, Tasty Food Delivery",
-      "quote": "Frantic Infotech did an excellent job building our Tasty Food Delivery platform. From intuitive design to seamless performance, every feature was crafted with attention to detail.",
+      "role": "Founder, Taste Food",
+      "quote": "Frantic Infotech did an excellent job building our Taste Food platform. From intuitive design to seamless performance, every feature was crafted with attention to detail.",
       "rating": 5,
       "featured": true,
       "order": 5,
